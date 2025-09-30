@@ -5,7 +5,7 @@
     <IntroducedVersion>1.0</IntroducedVersion>
     <FormPresentation>1</FormPresentation>
     <FormActivationState>1</FormActivationState>
-    <form>
+    <form headerdensity="HighWithControls">
       <tabs>
         <tab verticallayout="true" id="{7a8c4bf2-ede6-491e-b7b0-03dd54b62cf2}" IsUserDefined="1">
           <labels>
@@ -28,6 +28,30 @@
                       </cell>
                     </row>
                     <row>
+                      <cell id="{70e8b393-dc1b-4f6d-a12e-06d2aad4ed07}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="empEmail" languagecode="1033" />
+                        </labels>
+                        <control id="alm_empemail" classid="{ADA2203E-B4CD-49BE-9DDF-234642B43B52}" datafieldname="alm_empemail" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{9344f44e-b161-4b69-9e0d-42562ca04112}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="leaveDuration" languagecode="1033" />
+                        </labels>
+                        <control id="alm_leaveduration" classid="{C6D124CA-7EDA-4A60-AEA9-7FB8D318B68F}" datafieldname="alm_leaveduration" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
+                      <cell id="{f26c9766-b924-41a9-bfd1-683529eac216}" locklevel="0" colspan="1" rowspan="1">
+                        <labels>
+                          <label description="Approved" languagecode="1033" />
+                        </labels>
+                        <control id="alm_approved" classid="{67FAC785-CD58-4F9F-ABB3-4B7DDC6ED5ED}" datafieldname="alm_approved" disabled="false" />
+                      </cell>
+                    </row>
+                    <row>
                       <cell id="{a7fd0ecd-170a-48d8-9fb3-e26af9934126}">
                         <labels>
                           <label description="Owner" languagecode="1033" />
@@ -42,6 +66,51 @@
           </columns>
         </tab>
       </tabs>
+      <header id="{1f4d95f4-b71b-4a9e-b161-455ae76d8abe}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{0d580aef-7627-4f7d-a0ad-b4b3bbe35916}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{525f3573-c8af-4988-8a7e-c6f5f068ce45}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{8bebf027-8934-409b-84ab-934ea42f6165}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </header>
+      <footer id="{bf93170b-ced6-4cc5-b10e-27593eae9cce}" celllabelposition="Top" columns="111" labelwidth="115" celllabelalignment="Left">
+        <rows>
+          <row>
+            <cell id="{6a1c3eb7-64e2-43d7-a11f-d40792023b4f}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{6169a1f5-9220-42b4-8eb6-62c9231d9979}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+            <cell id="{15a0510f-9ba4-4119-af76-def1832e23a5}" showlabel="false">
+              <labels>
+                <label description="" languagecode="1033" />
+              </labels>
+            </cell>
+          </row>
+        </rows>
+      </footer>
+      <DisplayConditions Order="0" FallbackForm="true">
+        <Everyone />
+      </DisplayConditions>
     </form>
     <IsCustomizable>1</IsCustomizable>
     <CanBeDeleted>1</CanBeDeleted>

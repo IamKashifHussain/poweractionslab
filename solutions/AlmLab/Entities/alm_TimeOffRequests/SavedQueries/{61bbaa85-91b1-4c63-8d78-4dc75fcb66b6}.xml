@@ -11,6 +11,9 @@
       <grid name="resultset" jump="alm_name" select="1" icon="1" preview="1">
         <row name="result" id="alm_timeoffrequestsid">
           <cell name="alm_name" width="300" />
+          <cell name="alm_empemail" width="100" />
+          <cell name="alm_leaveduration" width="120" />
+          <cell name="alm_approved" width="100" />
           <cell name="createdon" width="125" />
         </row>
       </grid>
@@ -26,6 +29,9 @@
           <filter type="and">
             <condition attribute="statecode" operator="eq" value="0" />
           </filter>
+          <attribute name="alm_empemail" />
+          <attribute name="alm_leaveduration" />
+          <attribute name="alm_approved" />
         </entity>
       </fetch>
     </fetchxml>
