@@ -11,7 +11,7 @@ on:
       solution_name:
         description: 'The solution name.'
         type: string
-        default: AlmLab       
+        default: ALMLab       
       solution_shipping_folder:
         description: 'folder name for staging the exported solution *do not change*'        
         type: string
@@ -29,11 +29,11 @@ on:
        type: string
        default: out/release
       BUILD_ENVIRONMENT_URL:
-        description: 'https://org061c07c9.crm4.dynamics.com/'
+        description: 'Build environment url.'
         type: string
         required: true      
       PRODUCTION_ENVIRONMENT_URL: 
-        description: 'https://org4e853047.crm4.dynamics.com/'
+        description: 'Production environment url.'
         type: string
         required: true
       CLIENT_ID: 
