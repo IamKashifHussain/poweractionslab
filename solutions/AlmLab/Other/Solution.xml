@@ -79,6 +79,7 @@
     </Publisher>
     <RootComponents>
       <RootComponent type="1" schemaName="alm_timeoffrequests" behavior="0" />
+      <RootComponent type="29" id="{d1f427df-ee9d-f011-b41c-7c1e52fb5157}" behavior="0" />
       <RootComponent type="62" schemaName="alm_AlmLabApp" behavior="0" />
       <RootComponent type="80" schemaName="alm_AlmLabApp" behavior="0" />
     </RootComponents>
