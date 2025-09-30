@@ -12,7 +12,7 @@ jobs:
     uses: ./.github/workflows/main.yml
     with:
       #You can specify the solution name here
-      solution_name: ALMLab
+      solution_name: AlmLab
       #Update your values here
       BUILD_ENVIRONMENT_URL: https://org061c07c9.crm4.dynamics.com/
       PRODUCTION_ENVIRONMENT_URL: https://org4e853047.crm4.dynamics.com/
