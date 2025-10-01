@@ -13,24 +13,6 @@
   <AppModuleSiteMaps />
   <AppModules />
   <EntityDataProviders />
-  <connectionreferences>
-    <connectionreference connectionreferencelogicalname="alm_sharedcommondataserviceforapps_ae209">
-      <connectionreferencedisplayname>Microsoft Dataverse AlmLab-ae209</connectionreferencedisplayname>
-      <connectorid>/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps</connectorid>
-      <iscustomizable>1</iscustomizable>
-      <promptingbehavior>0</promptingbehavior>
-      <statecode>0</statecode>
-      <statuscode>1</statuscode>
-    </connectionreference>
-    <connectionreference connectionreferencelogicalname="alm_sharedgmail_6aafe">
-      <connectionreferencedisplayname>Gmail AlmLab-6aafe</connectionreferencedisplayname>
-      <connectorid>/providers/Microsoft.PowerApps/apis/shared_gmail</connectorid>
-      <iscustomizable>1</iscustomizable>
-      <promptingbehavior>0</promptingbehavior>
-      <statecode>0</statecode>
-      <statuscode>1</statuscode>
-    </connectionreference>
-  </connectionreferences>
   <Languages>
     <Language>1033</Language>
   </Languages>
