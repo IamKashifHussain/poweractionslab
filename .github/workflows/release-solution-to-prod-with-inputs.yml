@@ -97,7 +97,9 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: managedSolutions
-        path: ${{ inputs.solution_shipping_folder}}/
+        path: | 
+          ${{ inputs.solution_shipping_folder}}/
+          ${{ inputs.solution_name }}/config.prod.settings.json
 
   release-to-staging:
     needs: [ convert-to-managed ]
