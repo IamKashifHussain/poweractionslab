@@ -97,7 +97,9 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: managedSolutions
-        path: ${{ inputs.solution_shipping_folder}}/
+        path: |
+          ${{ inputs.solution_shipping_folder}}/
+          config/prod.settings.json
 
   release-to-staging:
     needs: [ convert-to-managed ]
@@ -127,7 +129,5 @@ jobs:
         client-secret: ${{ secrets.envSecret }}
         tenant-id: ${{inputs.TENANT_ID}}
         solution-file: ${{ inputs.solution_release_folder}}/${{ inputs.solution_name }}_managed.zip
-        use-deployment-settings-file: true
-        deployment-settings-file: config/prod.settings.json
         force-overwrite: true
         publish-changes: true
