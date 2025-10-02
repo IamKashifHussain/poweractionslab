@@ -1,7 +1,7 @@
 {
   "connectionReferences": {
     "shared_commondataserviceforapps": {
-      "connectionId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps/connections/REPLACE_WITH_PROD_CONNECTION_ID"
+      "connectionId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps/connections/bf48e6cc8d9b4d928655af76cc52c429"
     }
   },
   "environmentVariables": {
