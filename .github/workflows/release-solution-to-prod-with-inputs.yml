@@ -125,7 +125,7 @@ jobs:
           app-id: ${{inputs.CLIENT_ID}}
           client-secret: ${{ secrets.envSecret }}
           tenant-id: ${{inputs.TENANT_ID}}
-          solution-file: ${{ inputs.solution_release_folder}}/${{ inputs.solution_name }}_managed.zip
+          solution-file: ${{ inputs.solution_release_folder }}/out/${{ inputs.solution_name }}_managed.zip
           use-deployment-settings-file: true
           deployment-settings-file: ${{ inputs.solution_release_folder }}/prod.settings.json
           force-overwrite: true
