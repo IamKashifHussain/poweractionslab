@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EntityRelationships xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <EntityRelationship Name="business_unit_alm_testtable" />
   <EntityRelationship Name="business_unit_alm_timeoffrequests" />
+  <EntityRelationship Name="lk_alm_testtable_createdby" />
+  <EntityRelationship Name="lk_alm_testtable_modifiedby" />
   <EntityRelationship Name="lk_alm_timeoffrequests_createdby" />
   <EntityRelationship Name="lk_alm_timeoffrequests_modifiedby" />
+  <EntityRelationship Name="owner_alm_testtable" />
   <EntityRelationship Name="owner_alm_timeoffrequests" />
+  <EntityRelationship Name="team_alm_testtable" />
   <EntityRelationship Name="team_alm_timeoffrequests" />
+  <EntityRelationship Name="user_alm_testtable" />
   <EntityRelationship Name="user_alm_timeoffrequests" />
 </EntityRelationships>
