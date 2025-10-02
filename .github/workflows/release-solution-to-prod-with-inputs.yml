@@ -79,6 +79,8 @@ jobs:
         client-secret: ${{ secrets.envSecret }}
         tenant-id: ${{inputs.TENANT_ID}}
         solution-file: ${{ inputs.solution_outbound_folder}}/${{ inputs.solution_name }}.zip
+        use-deployment-settings-file: true
+        deployment-settings-file: config/build.settings.json
         force-overwrite: true
         publish-changes: true
 
@@ -128,6 +130,6 @@ jobs:
         tenant-id: ${{inputs.TENANT_ID}}
         solution-file: ${{ inputs.solution_release_folder}}/${{ inputs.solution_name }}_managed.zip
         use-deployment-settings-file: true
-        deployment-settings-file: ${{ inputs.solution_release_folder}}/settings.json 
+        deployment-settings-file: config/prod.settings.json
         force-overwrite: true
         publish-changes: true
