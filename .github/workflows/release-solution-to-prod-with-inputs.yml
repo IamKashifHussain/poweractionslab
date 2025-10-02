@@ -1,14 +1,11 @@
 name: release-solution-to-prod-reusable
-# Reusable workflow
-# Converts solution to managed (using a build PowerPlatform environment)
-# Uploads the solution to GitHub artifacts and deploys to PROD
 on:
   workflow_call:
-    inputs: 
+    inputs:
       solution_name:
         description: 'The solution name.'
         type: string
-        default: AlmLab       
+        default: AlmLab
       solution_shipping_folder:
         description: 'Folder for staging exported solution'
         type: string
@@ -17,7 +14,7 @@ on:
         description: 'Staging unpacked solution folder'
         type: string
         default: out/solutions/
-      solution_source_folder: 
+      solution_source_folder:
         description: 'Folder to be created and checked in'
         type: string
         default: solutions/
@@ -28,16 +25,16 @@ on:
       BUILD_ENVIRONMENT_URL:
         description: 'Build environment URL'
         type: string
-        required: true      
-      PRODUCTION_ENVIRONMENT_URL: 
+        required: true
+      PRODUCTION_ENVIRONMENT_URL:
         description: 'Production environment URL'
         type: string
         required: true
-      CLIENT_ID: 
+      CLIENT_ID:
         description: 'The client ID'
         type: string
         required: true
-      TENANT_ID: 
+      TENANT_ID:
         description: 'The tenant ID'
         type: string
         required: true
@@ -62,43 +59,44 @@ jobs:
       - name: Pack solution
         uses: microsoft/powerplatform-actions/pack-solution@v1
         with:
-          solution-folder: ${{ inputs.solution_source_folder}}/${{ inputs.solution_name }}
-          solution-file: ${{ inputs.solution_outbound_folder}}/${{ inputs.solution_name }}.zip
+          solution-folder: ${{ inputs.solution_source_folder }}/${{ inputs.solution_name }}
+          solution-file: ${{ inputs.solution_outbound_folder }}/${{ inputs.solution_name }}.zip
           solution-type: Unmanaged
 
       - name: Import solution as unmanaged to build env
         uses: microsoft/powerplatform-actions/import-solution@v1
         with:
-          environment-url: ${{inputs.BUILD_ENVIRONMENT_URL}}
-          app-id: ${{inputs.CLIENT_ID}}
+          environment-url: ${{ inputs.BUILD_ENVIRONMENT_URL }}
+          app-id: ${{ inputs.CLIENT_ID }}
           client-secret: ${{ secrets.envSecret }}
-          tenant-id: ${{inputs.TENANT_ID}}
-          solution-file: ${{ inputs.solution_outbound_folder}}/${{ inputs.solution_name }}.zip
+          tenant-id: ${{ inputs.TENANT_ID }}
+          solution-file: ${{ inputs.solution_outbound_folder }}/${{ inputs.solution_name }}.zip
           force-overwrite: true
           publish-changes: true
 
       - name: Export solution as managed
         uses: microsoft/powerplatform-actions/export-solution@v1
         with:
-          environment-url: ${{inputs.BUILD_ENVIRONMENT_URL}}
-          app-id: ${{inputs.CLIENT_ID}}
-          client-secret: ${{ secrets.envSecret }} 
-          tenant-id: ${{inputs.TENANT_ID}}
+          environment-url: ${{ inputs.BUILD_ENVIRONMENT_URL }}
+          app-id: ${{ inputs.CLIENT_ID }}
+          client-secret: ${{ secrets.envSecret }}
+          tenant-id: ${{ inputs.TENANT_ID }}
           solution-name: ${{ inputs.solution_name }}
           managed: true
-          solution-output-file: ${{ inputs.solution_shipping_folder}}/${{ inputs.solution_name }}_managed.zip
+          solution-output-file: ${{ inputs.solution_shipping_folder }}/${{ inputs.solution_name }}_managed.zip
 
-      - name: Upload the ready-to-ship solution and config
+      - name: Upload managed solution and settings
         uses: actions/upload-artifact@v4
         with:
           name: managedSolutions
           path: |
-            ${{ inputs.solution_shipping_folder}}/${{ inputs.solution_name }}_managed.zip
+            ${{ inputs.solution_shipping_folder }}/${{ inputs.solution_name }}_managed.zip
             config/prod.settings.json
+          retention-days: 7
 
   release-to-staging:
-    needs: [ convert-to-managed ]
-    runs-on: windows-latest 
+    needs: [convert-to-managed]
+    runs-on: windows-latest
     env:
       RUNNER_DEBUG: 1
     steps:
@@ -109,24 +107,35 @@ jobs:
       - name: Install Power Platform CLI
         uses: microsoft/powerplatform-actions/actions-install@v1
 
-      - name: Fetch the ready-to-ship solution and config from GH artifact
+      - name: Download managed solution and settings
         uses: actions/download-artifact@v4
         with:
           name: managedSolutions
           path: ${{ inputs.solution_release_folder }}
 
-      - name: List downloaded files (debug)
-        run: dir ${{ inputs.solution_release_folder }}
+      - name: Confirm downloaded files
+        run: dir ${{ inputs.solution_release_folder }} /s
 
-      - name: Import solution to production environment
+      - name: Validate solution and settings files
+        run: |
+          if (!(Test-Path "${{ inputs.solution_release_folder }}\out\ship\${{ inputs.solution_name }}_managed.zip")) {
+            Write-Error "Managed solution not found at expected path"
+            exit 1
+          }
+          if (!(Test-Path "${{ inputs.solution_release_folder }}\config\prod.settings.json")) {
+            Write-Error "Deployment settings file missing"
+            exit 1
+          }
+
+      - name: Import solution to production
         uses: microsoft/powerplatform-actions/import-solution@v1
         with:
-          environment-url: ${{inputs.PRODUCTION_ENVIRONMENT_URL}}
-          app-id: ${{inputs.CLIENT_ID}}
+          environment-url: ${{ inputs.PRODUCTION_ENVIRONMENT_URL }}
+          app-id: ${{ inputs.CLIENT_ID }}
           client-secret: ${{ secrets.envSecret }}
-          tenant-id: ${{inputs.TENANT_ID}}
+          tenant-id: ${{ inputs.TENANT_ID }}
           solution-file: ${{ inputs.solution_release_folder }}/out/ship/${{ inputs.solution_name }}_managed.zip
           use-deployment-settings-file: true
-          deployment-settings-file: ${{ inputs.solution_release_folder }}/prod.settings.json
+          deployment-settings-file: ${{ inputs.solution_release_folder }}/config/prod.settings.json
           force-overwrite: true
           publish-changes: true
