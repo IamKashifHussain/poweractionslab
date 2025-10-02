@@ -1,13 +1,13 @@
 {
-  "connectionReferences": {
+  "ConnectionReferences": {
     "shared_commondataserviceforapps": {
-      "connectionId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps/connections/bf48e6cc8d9b4d928655af76cc52c429"
+      "connectionId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps/connections/bf48e6cc8d9b4d928655af76cc52c429",
+      "connectorId": "/providers/Microsoft.PowerApps/apis/shared_commondataserviceforapps"
     }
   },
-  "environmentVariables": {
+  "EnvironmentVariables": {
     "TimeOffFlowURL": {
       "value": "https://710c619ad78de0069e1ac2835b83b9.5e.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/1bf0fe3bf78b498693900e085f913320/triggers/manual/paths/invoke/?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=IyGdgXEe_XT2_2d7iCdHEIxL1w_zq3J0I6MfRWHrXPc"
     }
   }
 }
-
