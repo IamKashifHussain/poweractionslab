@@ -78,6 +78,7 @@
       </Addresses>
     </Publisher>
     <RootComponents>
+      <RootComponent type="1" schemaName="alm_testtable" behavior="0" />
       <RootComponent type="1" schemaName="alm_timeoffrequests" behavior="0" />
       <RootComponent type="29" id="{77869d6f-aa9e-f011-b41c-7c1e52fb5157}" behavior="0" />
       <RootComponent type="62" schemaName="alm_AlmLabApp" behavior="0" />
