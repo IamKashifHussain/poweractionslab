@@ -98,7 +98,7 @@ jobs:
       with:
         name: managedSolutions
         path: |
-          ${{ inputs.solution_shipping_folder}}/
+          ${{ inputs.solution_shipping_folder}}//${{ inputs.solution_name }}_managed.zip
           config/prod.settings.json
 
   release-to-staging:
