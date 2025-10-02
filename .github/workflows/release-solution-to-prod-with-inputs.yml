@@ -1,4 +1,5 @@
 name: release-solution-to-prod-reusable
+
 on:
   workflow_call:
     inputs:
@@ -119,11 +120,11 @@ jobs:
       - name: Validate solution and settings files
         run: |
           if (!(Test-Path "${{ inputs.solution_release_folder }}\out\ship\${{ inputs.solution_name }}_managed.zip")) {
-            Write-Error "Managed solution not found at expected path"
+            Write-Error "❌ Managed solution not found at expected path"
             exit 1
           }
           if (!(Test-Path "${{ inputs.solution_release_folder }}\config\prod.settings.json")) {
-            Write-Error "Deployment settings file missing"
+            Write-Error "❌ Deployment settings file missing"
             exit 1
           }
 
@@ -139,3 +140,6 @@ jobs:
           deployment-settings-file: ${{ inputs.solution_release_folder }}/config/prod.settings.json
           force-overwrite: true
           publish-changes: true
+
+      - name: Confirm deployment
+        run: echo "✅ '${{ inputs.solution_name }}' successfully deployed to PROD."
